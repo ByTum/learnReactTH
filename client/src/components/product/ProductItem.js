@@ -23,7 +23,7 @@ class ProductItem extends Component {
   // }
 
   render() {
-    const { productName, unitPrice, thumbnail } = this.props;
+    const { productName, unitPrice, thumbnail } = this.props.product;
     return (
       <div className="col-md-3 col-sm-6">
         <img className="img-fluid img-thumbnail" src={thumbnail} alt="" />
@@ -32,7 +32,8 @@ class ProductItem extends Component {
         <button
           className="btn btn-block btn-secondary title"
           // onClick={() => this.doSomething(productName)}
-          onClick={() => console.log(productName)}
+          // onClick={() => console.log(productName)}
+          onClick={() => this.props.onAddOrder(this.props.product)}
         >
           ซื้อ
         </button>

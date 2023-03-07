@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Moniter from "./components/moniter/Moniter";
 import Footer from "./components/Footer";
-import ProductItem from "./components/product/ProductItem";
+// import ProductItem from "./components/product/ProductItem";
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // solution 1
+    /* 
     this.setState({
       products: [
         {
@@ -51,6 +54,22 @@ class App extends Component {
           thumbnail: "/images/product/6.jpg",
         },
       ],
+    });
+    */
+    // solution 2 get data from api
+    /*
+    fetch("http://localhost:3001/products", { method: "GET" })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({ products: res });
+      });
+      */
+    // solution 3 axios
+    axios.get("http://localhost:3001/products").then((res) => {
+      // console.log(res.data);
+      {
+        this.setState({ products: res.data });
+      }
     });
   }
 

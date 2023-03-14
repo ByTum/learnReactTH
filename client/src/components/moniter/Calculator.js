@@ -34,8 +34,18 @@ class Calculator extends Component {
         <hr />
         <ul className="list-unstyled">{this.showOrders(orders)}</ul>
         <hr />
-        <button className="btn btn-block btn-danger title">ยืนยัน</button>
-        <button className="btn btn-block btn-secondary title">ยกเลิก</button>
+        <button
+          className="btn btn-block btn-danger title"
+          onClick={() => this.props.confirmOrder()}
+        >
+          ยืนยัน
+        </button>
+        <button
+          className="btn btn-block btn-secondary title"
+          onClick={() => this.props.cancelOrder()}
+        >
+          ยกเลิก
+        </button>
       </div>
     );
   }

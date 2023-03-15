@@ -15,7 +15,7 @@ class Moniter extends Component {
 
   addOrder(product) {
     let findOrder = this.state.orders.find(
-      (order) => order.product.productId === product.productId
+      (order) => order.product.id === product.id
     );
     if (findOrder) {
       findOrder.quantity++;
@@ -32,10 +32,10 @@ class Moniter extends Component {
 
   delOrder(product) {
     let findOrder = this.state.orders.find(
-      (order) => order.product.productId === product.productId
+      (order) => order.product.id === product.id
     );
     let resultOrder = this.state.orders.filter(
-      (order) => order.product.productId !== product.productId
+      (order) => order.product.id !== product.id
     );
     const totalPrice =
       this.state.totalPrice -

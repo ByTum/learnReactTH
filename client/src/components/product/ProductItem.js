@@ -29,14 +29,31 @@ class ProductItem extends Component {
         <img className="img-fluid img-thumbnail" src={thumbnail} alt="" />
         <h5 className="mt-2">{productName}</h5>
         <p className="title text-right">{unitPrice} THB</p>
-        <button
-          className="btn btn-block btn-secondary title"
-          // onClick={() => this.doSomething(productName)}
-          // onClick={() => console.log(productName)}
-          onClick={() => this.props.onAddOrder(this.props.product)}
-        >
-          ซื้อ
-        </button>
+
+        {this.props.onAddOrder && (
+          <button
+            className="btn btn-block btn-secondary title"
+            // onClick={() => this.doSomething(productName)}
+            // onClick={() => console.log(productName)}
+            onClick={() => this.props.onAddOrder(this.props.product)}
+          >
+            ซื้อ
+          </button>
+        )}
+
+        {(this.props.onDelProduct || this.props.onEditProduct) && (
+          <button className="btn  btn-info col-5 title">แก้ไข</button>
+        )}
+
+        {(this.props.onDelProduct || this.props.onEditProduct) && (
+          <button
+            className="btn btn-danger col-5 title float-right"
+            onClick={() => this.props.onDelProduct(this.props.product)}
+          >
+            ลบ
+          </button>
+        )}
+        <hr />
       </div>
     );
   }

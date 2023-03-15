@@ -8,10 +8,7 @@ class Calculator extends Component {
       return orders.map((order) => {
         return (
           // add key for solve error
-          <li
-            className="text-right text-success title"
-            key={order.product.productId}
-          >
+          <li className="text-right text-success title" key={order.product.id}>
             {order.product.productName} x {order.quantity} ={" "}
             {order.product.unitPrice * order.quantity}
             <button

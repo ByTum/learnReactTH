@@ -23,9 +23,11 @@ class ProductList extends Component {
         // Spread Operator
         // react want key
         <ProductItem
-          key={product.productId}
+          key={product.id}
           product={product}
           onAddOrder={this.props.onAddOrder}
+          // get props from component Product.js
+          onDelProduct={this.props.onDelProduct}
         />
       ))
     );

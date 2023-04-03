@@ -1,32 +1,36 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import axios from "axios";
+// import axios from "axios";
+import { connect } from "react-redux";
+import { orderFetch, orderDelete } from "../../actions";
 
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = { orders: null };
+    // this.state = { orders: null };
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/orders").then((res) => {
-      this.setState({ orders: res.data });
-    });
+    // axios.get("http://localhost:3001/orders").then((res) => {
+    //   this.setState({ orders: res.data });
+    // });
+    this.props.orderFetch();
   }
 
   delOrder(order) {
-    axios.delete("http://localhost:3001/orders/" + order.id).then((res) => {
-      axios.get("http://localhost:3001/orders").then((res) => {
-        this.setState({ orders: res.data });
-      });
-    });
+    // axios.delete("http://localhost:3001/orders/" + order.id).then((res) => {
+    //   axios.get("http://localhost:3001/orders").then((res) => {
+    //     this.setState({ orders: res.data });
+    //   });
+    // });
+    this.props.orderDelete(order.id);
   }
 
   showOrders() {
     return (
-      this.state.orders &&
-      this.state.orders.map((order) => {
+      this.props.orders &&
+      this.props.orders.map((order) => {
         const date = new Date(order.orderedDate);
         return (
           <div key={order.id} className="col-md-3">
@@ -68,10 +72,14 @@ class Order extends Component {
           <h1>รายการสั่งซื้อ</h1>
           <div className="row">{this.showOrders()}</div>
         </div>
-        <Footer />
+        <Footer firstname="tum" lastname="tum lastname" />
       </div>
     );
   }
 }
 
-export default Order;
+function mapStateToProps({ orders }) {
+  return { orders };
+}
+
+export default connect(mapStateToProps, { orderFetch, orderDelete })(Order);

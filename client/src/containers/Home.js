@@ -3,12 +3,14 @@ import Header from "../components/Header";
 import Moniter from "../components/moniter/Moniter";
 import Footer from "../components/Footer";
 // import ProductItem from "./components/product/ProductItem";
-import axios from "axios";
+// import axios from "axios";
+import { connect } from "react-redux";
+import { productsFetch } from "../actions/index";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: "" };
+    // this.state = { products: "" };
   }
 
   componentDidMount() {
@@ -63,13 +65,17 @@ class Home extends Component {
         this.setState({ products: res });
       });
       */
-    // solution 3 axios
+    //  solution 3 axios
+    /*
     axios.get("http://localhost:3001/products").then((res) => {
-      // console.log(res.data);
+    console.log(res.data);
       {
         this.setState({ products: res.data });
       }
     });
+    */
+    // solution 4 redux
+    this.props.productsFetch();
   }
 
   render() {
@@ -79,10 +85,19 @@ class Home extends Component {
         {/* <ProductItem productName="Iphone" unitPrice="45000" />
         <ProductItem productName="I Pad" unitPrice="20000" />
         <ProductItem productName="I Pod" unitPrice="5000" /> */}
-        <Moniter products={this.state.products} />
+        <Moniter products={this.props.products} />
         <Footer firstname="tum" lastname="tum lastname" />
       </div>
     );
   }
 }
-export default Home;
+// function mapStateTuProps(state) {
+// deconstructor
+function mapStateToProps({ products }) {
+  // console.log(state);
+  // state from store redux
+  // return { products: state.products };
+  return { products };
+}
+
+export default connect(mapStateToProps, { productsFetch })(Home);

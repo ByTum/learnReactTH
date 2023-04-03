@@ -28,6 +28,7 @@ class ProductList extends Component {
           onAddOrder={this.props.onAddOrder}
           // get props from component Product.js
           onDelProduct={this.props.onDelProduct}
+          onEditProduct={this.props.onEditProduct}
         />
       ))
     );

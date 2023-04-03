@@ -1,0 +1,1 @@
+reducers is a function to get actions and change value in state within store

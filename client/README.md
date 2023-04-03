@@ -76,3 +76,11 @@ npm start and start json-server
 
 how to start json server
 json-server --watch resources/data/db.json --port 3001
+
+how to solve "this.props.history.push not working react router v6"
+
+todo below
+https://stackoverflow.com/questions/63471931/using-history-with-react-router-dom-v6
+
+use withRouter in class component
+https://stackoverflow.com/questions/70143135/how-to-use-react-router-dom-v6-navigate-in-class-component
